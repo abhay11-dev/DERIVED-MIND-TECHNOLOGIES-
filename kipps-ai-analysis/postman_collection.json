@@ -1,0 +1,171 @@
+{
+  "info": {
+    "name": "Kipps.AI - Conversation Analysis API",
+    "description": "Complete API collection for Kipps.AI conversation analysis system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Conversations",
+      "item": [
+        {
+          "name": "Create Conversation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Customer Support - Order Issue\",\n  \"messages\": [\n    {\n      \"sender\": \"user\",\n      \"text\": \"Hello, I have a problem with my recent order\",\n      \"timestamp\": \"2024-01-15T10:00:00Z\"\n    },\n    {\n      \"sender\": \"agent\",\n      \"text\": \"I understand your concern. I'm here to help. Can you please provide your order number?\",\n      \"timestamp\": \"2024-01-15T10:00:30Z\"\n    },\n    {\n      \"sender\": \"user\",\n      \"text\": \"My order number is #12345\",\n      \"timestamp\": \"2024-01-15T10:01:00Z\"\n    },\n    {\n      \"sender\": \"agent\",\n      \"text\": \"Thank you! I've located your order. It was shipped yesterday and should arrive tomorrow. Is there anything else you need?\",\n      \"timestamp\": \"2024-01-15T10:02:00Z\"\n    },\n    {\n      \"sender\": \"user\",\n      \"text\": \"Perfect! That's exactly what I needed. Thank you!\",\n      \"timestamp\": \"2024-01-15T10:02:30Z\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/conversations/",
+              "host": ["{{base_url}}"],
+              "path": ["conversations", ""]
+            }
+          }
+        },
+        {
+          "name": "List Conversations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/conversations/?page=1",
+              "host": ["{{base_url}}"],
+              "path": ["conversations", ""],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Conversation Detail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/conversations/1/",
+              "host": ["{{base_url}}"],
+              "path": ["conversations", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Analyze Conversation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/conversations/1/analyze/",
+              "host": ["{{base_url}}"],
+              "path": ["conversations", "1", "analyze", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Analysis",
+      "item": [
+        {
+          "name": "List All Analyses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analysis/",
+              "host": ["{{base_url}}"],
+              "path": ["analysis", ""]
+            }
+          }
+        },
+        {
+          "name": "Filter by Sentiment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analysis/?sentiment=positive",
+              "host": ["{{base_url}}"],
+              "path": ["analysis", ""],
+              "query": [
+                {
+                  "key": "sentiment",
+                  "value": "positive"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter by Score",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analysis/?min_score=80",
+              "host": ["{{base_url}}"],
+              "path": ["analysis", ""],
+              "query": [
+                {
+                  "key": "min_score",
+                  "value": "80"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter by Date Range",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analysis/?date_from=2024-01-01&date_to=2024-12-31",
+              "host": ["{{base_url}}"],
+              "path": ["analysis", ""],
+              "query": [
+                {
+                  "key": "date_from",
+                  "value": "2024-01-01"
+                },
+                {
+                  "key": "date_to",
+                  "value": "2024-12-31"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Specific Analysis",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analysis/1/",
+              "host": ["{{base_url}}"],
+              "path": ["analysis", "1", ""]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000/api",
+      "type": "string"
+    }
+  ]
+}
